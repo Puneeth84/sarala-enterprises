@@ -1,112 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarala Enterprises</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
+public class UserProfile {
+    // Instance variables (Encapsulated)
+    private String username;
+    private String email;
+    private int age;
+    private boolean isActive;
+
+    // Constructor to initialize the UserProfile
+    public UserProfile(String username, String email, int age) {
+        this.username = username;
+        this.email = email;
+        this.age = age;
+        this.isActive = true; // Default status when created
+    }
+
+    // Getters and Setters
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
         }
+    }
 
-        /* Header & Navigation */
-        header {
-            background-color: #004d40;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
+    public boolean isActive() {
+        return isActive;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
+    // Method to display profile information
+    public void displayProfile() {
+        System.out.println("--- User Profile ---");
+        System.out.println("Username: " + username);
+        System.out.println("Email: " + email);
+        System.out.println("Age: " + age);
+        System.out.println("Status: " + (isActive ? "Active" : "Inactive"));
+        System.out.println("--------------------");
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+    // Main method to test/run the code
+    public static void main(String[] args) {
+        // Create a new user profile object
+        UserProfile user1 = new UserProfile("alex_dev", "alex@example.com", 26);
 
-        nav ul li a:hover {
-            color: #80cbc4;
-        }
+        // Display the initial profile
+        user1.displayProfile();
 
-        /* Hero / Introduction Section */
-        .hero {
-            text-align: center;
-            padding: 5rem 1rem;
-            background-color: #ffffff;
-            margin: 2rem auto;
-            max-width: 800px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .hero h2 {
-            color: #004d40;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #e0f2f1;
-            color: #004d40;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Section -->
-    <header>
-        <h1>Sarala Enterprises</h1>
-        <nav>
-            <ul>
-                <!-- Static Menu Options -->
-                <li><a href="#product">Product</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content Section -->
-    <main class="hero">
-        <h2>Welcome to Sarala Enterprises</h2>
-        <p>Explore our offerings and get in touch with us today.</p>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Sarala Enterprises. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+        // Update some details using setters
+        user1.setEmail("alex.newemail@example.com");
+        
+        // Display updated profile
+        System.out.println("\nAfter updating email:");
+        user1.displayProfile();
+    }
+}
