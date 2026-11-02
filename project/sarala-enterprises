@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${websiteName}">Sarala Enterprises</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1 th:text="${websiteName}">Website Name</h1>
+        <nav>
+            <ul>
+                <!-- Dynamically looping through the menu options -->
+                <li th:each="option : ${menuOptions}">
+                    <a th:href="@{'/' + ${#strings.toLowerCase(option)}}" th:text="${option}">Option</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="hero">
+        <h2 th:text="${introduction}">Welcome Message</h2>
+        <p>Explore our offerings and get in touch with us today.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sarala Enterprises. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
